@@ -1,3 +1,19 @@
+<<<<<<< HEAD
+name: tests-tickets
+
+on:
+  pull_request
+
+
+jobs:
+ build:
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: action/checkout@v2
+      -  run: cd tickets && npm install && npm run test:ci
+     
+       
+=======
 name: test-tickets
 
 on:
@@ -12,3 +28,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: cd tickets && npm install && npm run test:ci
+>>>>>>> f396f7d22a5bdf666d3f432bbf3ff342dcfce4f3
