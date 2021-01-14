@@ -1,3 +1,4 @@
+
 name: deploy-auth
 
 on:
@@ -19,3 +20,8 @@ jobs:
            DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
            DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
       - run : docker push bibhuduttadas/auth
+      - uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{secret.DIGITALOCEAN_ACCESS_TOKEN}}
+      - run : doctl kubernetes cluster kubeconfig save ticketing 
+      - run : kubectl rollout restart deployment auth-depl  
